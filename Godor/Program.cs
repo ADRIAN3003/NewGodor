@@ -35,16 +35,26 @@ namespace Godor
 
             using (StreamWriter ki = new StreamWriter("godrok.txt"))
             {
+                List<int> temp = new List<int>();
+                int hossza = 0;
+                int kezdete = 0;
+                int vege = 0;
                 for (int i = 0; i < melysegek.Count; i++)
                 {
                     if (melysegek[i] != 0)
                     {
                         ki.Write($"{melysegek[i]} ");
+                        temp.Add(melysegek[i]);
                     }
                     else
                     {
                         if (i != 0 && melysegek[i - 1] != 0)
                         {
+                            //lista bővítés
+                            hossza = temp.Count;
+                            kezdete = vege - hossza;
+                            vege = i - 1;
+                            aroks.Add(new Arok(kezdete, vege, temp));
                             ki.WriteLine();
                             db++;
                         }
