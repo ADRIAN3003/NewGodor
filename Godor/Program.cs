@@ -20,8 +20,34 @@ namespace Godor
             HarmadikFeladat();
             NegyedikFeladat();
             OtodikFeladat();
+            HatodikFeladat();
 
             Console.ReadKey();
+        }
+
+        private static void HatodikFeladat()
+        {
+            Console.WriteLine($"\n6. feladat\na)");
+            if (melysegek[tavolsag] == 0)
+            {
+                Console.WriteLine("Az adott helyen nincs gödör.");
+            }
+            else
+            {
+                for (int i = 0; i < aroks.Count; i++)
+                {
+                    if (aroks[i].Kezdete <= tavolsag && aroks[i].Vege >= tavolsag)
+                    {
+                        Console.WriteLine("A gödör kezdete: " + aroks[i].Kezdete + " méter, a gödör vége: " + aroks[i].Vege + " méter.");
+                        Console.WriteLine("b)");
+                        Console.WriteLine("A legnagyobb mélysége " + aroks[i].Max + " méter");
+                        Console.WriteLine("c)");
+                        Console.WriteLine("A térfogata " + aroks[i].Terfogat + " m^3");
+                        Console.WriteLine("d)");
+                        Console.WriteLine("A vízmennyiség " + aroks[i].Terfogat + " m^3");
+                    }
+                }
+            }
         }
 
         private static void OtodikFeladat()
@@ -52,9 +78,10 @@ namespace Godor
                         {
                             //lista bővítés
                             hossza = temp.Count;
-                            kezdete = vege - hossza;
-                            vege = i - 1;
+                            vege = i;
+                            kezdete = vege - hossza + 1;
                             aroks.Add(new Arok(kezdete, vege, temp));
+                            temp.Clear();
                             ki.WriteLine();
                             db++;
                         }

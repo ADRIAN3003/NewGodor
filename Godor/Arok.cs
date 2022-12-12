@@ -19,13 +19,25 @@ namespace Godor
 
         List<int> melysegek = new List<int>();
 
+        public int Max { get { return melysegek.Max(); } }
+
+        public int Terfogat {
+            get
+            {
+                return melysegek.Sum() * SZELESSEG;
+            }
+        }
+
         const int SZELESSEG = 10;
 
         public Arok(int kezdete, int vege, List<int> melysegek)
         {
             Kezdete = kezdete;
             Vege = vege;
-            this.melysegek = melysegek;
+            foreach (var item in melysegek)
+            {
+                this.melysegek.Add(item);
+            }
         }
     }
 }
